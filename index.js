@@ -7,8 +7,6 @@
 var _ = require('lodash');
 var JOI = require('joi');
 
-var ValidationError = require('./validation-error');
-
 /**
  * Default error formatter which given an errors array (returned by calling the validate method of underlying JOI
  * framework) and generates a JSON representation of errors in following format:

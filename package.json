@@ -1,6 +1,6 @@
 {
   "name": "valid-express",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Express middleware to validate request params using Joi module",
   "main": "index.js",
   "scripts": {
