@@ -17,7 +17,7 @@ Main features includes:
   * Request body parameters (e.g. as json or url-encoded)
   * Parameters in URL (e.g. /users/:id)
 - Customize output format by passing a an `errorFormatter` function
-- Integrate smoothly with express.js to handle parameter validation process
+- Integrate smoothly with [express.js](https://www.npmjs.com/package/express) to handle parameter validation process
 
 ## Installation
 
@@ -188,7 +188,7 @@ app.post('/users/:token', validator.validate(someSchema), function (req, res, ne
 
 ## Test
 
-Tests are implemented using mocha, should and supertest. Each test case starts a sample expres application and runs the test against it and then stops the app.
+Tests are implemented using [mocha](https://www.npmjs.com/package/mocha), [should](https://www.npmjs.com/package/should) and [supertest](https://www.npmjs.com/package/supertest). Each test case starts a sample expres application and runs the test against it and then stops the app.
 
 ```sh
 npm test
