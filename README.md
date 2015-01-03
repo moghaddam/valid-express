@@ -130,6 +130,9 @@ var loginSchema = {
     body: joi.object().keys({
 	    username: joi.string().min(4).max(10).required(),
     	password: joi.string().min(3).max(15)
+    }),
+    query: joi.object().keys({
+	    id: joi.string().min(1).max(12).required()
     })
 };
 
@@ -156,7 +159,7 @@ In case of any error in validating input parameters, the `400` HTTP response cod
 If you're familiar with `joi` validation rules, you may noticed that the value of `message`, `type` and `path` properties (including property names) are exactly the same as returned value of the validate method of `joi`.
 
 ## Customizing format of the error result 
-In order to customize the format of the error result, you can pass an `options` parameter to `valid-express` constructor containing a property named `errorFormatter` that is a function that gives an array of error objects and returns a JSON object that should be returned to the client. This formatter function would be called by valid-express in order to generate an appropriate error report to client. It gives an array of error object each having three property: `message`, `type` and `path` and returns a JSON object.
+In order to customize the format of the error result, you can pass an `options` parameter to `valid-express` constructor containing a property named `errorFormatter` that is a function accepting an array of error objects as input and generates a JSON object that should be returned to the client. This formatter function would be called by valid-express in order to generate an appropriate error report to client. It gives an array of error object each having three property: `message`, `type` and `path` and returns a JSON object.
 
 For example if you want to generate a simple array containing the name of invalid proeprteis with their corresponding validation message, you can override the errorFormatter options with something like this:
 
