@@ -6,6 +6,14 @@
   "scripts": {
     "test": "node test/test1.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moghaddam/valid-express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moghaddam/valid-express/issues",
+    "email": "zaerymoghaddam@gmail.com"
+  },
   "keywords": [
     "express",
     "validate",
@@ -14,13 +22,14 @@
     "validation",
     "validate"
   ],
-  "author": "Ehsan Zaery Moghaddam (zaerymoghaddam@gmail.com)",
+  "author": "Ehsan Zaery Moghaddam <zaerymoghaddam@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "joi": "^5.0.2",
     "lodash": "^2.4.1"
   },
   "devDependencies": {
-    "express": "^4.10.6"
+    "express": "^4.10.6",
+    "mocha": "^2.1.0"
   }
 }
