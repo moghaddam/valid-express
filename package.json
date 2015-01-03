@@ -1,0 +1,26 @@
+{
+  "name": "valid-express",
+  "version": "0.1.0",
+  "description": "Express middleware to validate request params using Joi module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test1.js"
+  },
+  "keywords": [
+    "express",
+    "validate",
+    "joi",
+    "middleware",
+    "validation",
+    "validate"
+  ],
+  "author": "Ehsan Zaery Moghaddam (zaerymoghaddam@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "joi": "^5.0.2",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "express": "^4.10.6"
+  }
+}
