@@ -2,7 +2,7 @@
 
 Flexible validation framework for express.js
 
-[![GitHub version](https://badge.fury.io/gh/moghaddam%2Fvalid-express.svg)](http://badge.fury.io/gh/moghaddam%2Fvalid-express)
+[![npm version](https://badge.fury.io/js/valid-express.svg)](http://badge.fury.io/js/valid-express)
 [![Gemnasium](https://img.shields.io/gemnasium/moghaddam/valid-express.svg)]()
 [![npm](https://img.shields.io/npm/v/npm.svg)]()
 [![David](https://img.shields.io/david/dev/moghaddam/valid-express.svg)]()
