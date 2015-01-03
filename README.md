@@ -12,10 +12,10 @@ Flexible validation framework for express.js
 Main features includes:
 
 - Easily declare validation rules for:
-
-  * Query string parameters (e.g. /users?id=12
+  * Query string parameters (e.g. /users?id=12)
   * Request body parameters (e.g. as json or url-encoded)
   * Parameters in URL (e.g. /users/:id)
+
 - Customize output format by passing a an `errorFormatter` function
 - Integrate smoothly with [express.js](https://www.npmjs.com/package/express) to handle parameter validation process
 
