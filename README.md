@@ -57,7 +57,7 @@ app.listen(3000);
 
 ```
 
-### Defining validation rules for `query` parameters (e.g. /users?id=2)
+### Validating `query` parameters (e.g. /users?id=2)
 In order to specify a validation rule for query string items, you have to pass include a property named `query` in your validation schema having a valid `joi` object as validation definitions.
 
 ```javascript
@@ -74,7 +74,7 @@ app.post('/users', validator.validate(querySchema), function (req, res, next) {
 });
 ```
 
-### Defining validation rules for `body` parameters (e.g. json or url-encoded)
+### Validating `body` parameters (e.g. json or url-encoded)
 The valid-express reads body parameters from `req.body`. So you have to include the `body-parser` middleware before making any call to `validExpress.validate`. Specifying validation rules for body part of the request is can be accomplished by providing a `body` property for validation schema haviand providing a valid `joi` object as its value.
 
 ```javascript
@@ -102,7 +102,7 @@ app.post('/users', validator.validate(bodySchema), function (req, res, next) {
 });
 ```
 
-### Defining validation rules for `params` parameters (e.g. /users/:id)
+### Validating `params` parameters (e.g. /users/:id)
 The `params` property of a validation schema is used to specify validation rules for parameters passed as part of URL. Its value should be a valid `joi` object.
 
 ```javascript
@@ -119,7 +119,7 @@ app.post('/users', validator.validate(paramsSchema), function (req, res, next) {
 });
 ```
 
-### Validating parameters in multiple places (e.g. query, body and params simultaniously)
+### Validating parameters in query, body or params simultaniously
 In order to specify multiple validation scheme, you can pass each one as its own property in validation schema.
 
 ```javascript
