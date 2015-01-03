@@ -78,9 +78,6 @@ app.post('/users', validator.validate(querySchema), function (req, res, next) {
 The valid-express reads body parameters from `req.body`. So you have to include the `body-parser` middleware before making any call to `validExpress.validate`. Specifying validation rules for body part of the request is can be accomplished by providing a `body` property for validation schema haviand providing a valid `joi` object as its value.
 
 ```javascript
-
-//	It's not required to use its json implementation. You can call any implementation of bodyParserMiddleware as specified in its documentation
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
