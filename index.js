@@ -39,7 +39,7 @@ var JOI = require('joi');
  * @param {Array} errors    Collection of error objects returned from calling validate method of underlying JOI
  * framework
  *
- * @return A JSON object containing formatted error report
+ * @return {Object} JSON object containing formatted error report
  */
 var validExpressDefaultErrorFormatter = function(errors){
     return {
@@ -50,7 +50,7 @@ var validExpressDefaultErrorFormatter = function(errors){
                 message: errorItem.message,
                 type: errorItem.type,
                 path: errorItem.path
-            }
+            };
         })
     };
 };
@@ -90,8 +90,9 @@ var validate = function(schema){
     //  Override those options specified when calling validate function. The caller can specify joi validation options
     //  when calling the validate method by passing a specific 'options' property as part of their schema definition
     var validationOptions = joiOptions;
-    if(schema.options)
+    if(schema.options){
         validationOptions = _.defaults(schema.options, joiOptions);
+    }
 
     var paramsSchema = schema.params ? schema.params : null;
     var querySchema = schema.query ? schema.query : null;
@@ -119,7 +120,7 @@ var validate = function(schema){
                 }
             }
 
-            if(!joiOptions.abortEarly || (joiOptions.abortEarly && errors.length == 0)) {
+            if(!joiOptions.abortEarly || (joiOptions.abortEarly && errors.length === 0)) {
                 if(querySchema){
                     results = JOI.validate(req.query, querySchema, validationOptions);
                     if(results.error){
@@ -129,10 +130,11 @@ var validate = function(schema){
                 }
             }
 
-            if(!joiOptions.abortEarly || (joiOptions.abortEarly && errors.length == 0)) {
+            if(!joiOptions.abortEarly || (joiOptions.abortEarly && errors.length === 0)) {
                 if (bodySchema) {
-                    if(req.body == undefined){
-                        throw Error('req.body is undefined. Seems you have forgotten to include the body-parser middleware in your express app');
+                    if(req.body === undefined){
+                        throw Error('req.body is undefined. Seems you have forgotten to include the body-parser ' +
+                        'middleware in your express app');
                     }
                     results = JOI.validate(req.body, bodySchema, validationOptions);
                     if (results.error) {
