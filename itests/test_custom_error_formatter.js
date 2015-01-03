@@ -12,7 +12,7 @@ var validator = validExpress();
 
 var app = null;
 
-describe.only('Custom error formatter', function(){
+describe('Custom error formatter', function(){
 
     var listeningServer = null;
 
