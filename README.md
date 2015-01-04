@@ -9,7 +9,7 @@ Flexible validation framework for express.js
 [![David](https://img.shields.io/david/dev/moghaddam/valid-express.svg)]()
 [![npm](https://img.shields.io/npm/l/valid-express.svg)]()
 [![GitHub issues](https://img.shields.io/github/issues/moghaddam/valid-express.svg)]()
-
+[![npm](https://img.shields.io/npm/dm/valid-express.svg)]()
 
 Main features includes:
 
