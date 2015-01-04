@@ -120,7 +120,7 @@ var validate = function(schema){
                 }
             }
 
-            if(!joiOptions.abortEarly || (joiOptions.abortEarly && errors.length === 0)) {
+            if(!validationOptions.abortEarly || (validationOptions.abortEarly && errors.length === 0)) {
                 if(querySchema){
                     results = JOI.validate(req.query, querySchema, validationOptions);
                     if(results.error){
@@ -130,7 +130,7 @@ var validate = function(schema){
                 }
             }
 
-            if(!joiOptions.abortEarly || (joiOptions.abortEarly && errors.length === 0)) {
+            if(!validationOptions.abortEarly || (validationOptions.abortEarly && errors.length === 0)) {
                 if (bodySchema) {
                     if(req.body === undefined){
                         throw Error('req.body is undefined. Seems you have forgotten to include the body-parser ' +
