@@ -20,7 +20,7 @@ Main features includes:
   * Request body parameters (e.g. as json or url-encoded)
   * Parameters in URL (e.g. /users/:id)
 
-- Customize output format by passing a an `errorFormatter` function
+- Customize output format by passing an `errorFormatter` function
 - Integrate smoothly with [express.js](https://www.npmjs.com/package/express) to handle parameter validation process
 
 ## Installation
