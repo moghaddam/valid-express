@@ -61,9 +61,12 @@ var joiOptions = {
     convert: true,
     allowUnknown: false,
     language: {},
-    presence: 'optional',
-    errorFormatter: validExpressDefaultErrorFormatter
+    presence: 'optional'
 };
+
+var validExpressOptions = {
+    errorFormatter: validExpressDefaultErrorFormatter
+}
 
 /**
  * The validate function would be called in any url handler methods in order to validate parameters and generate
@@ -89,9 +92,18 @@ var validate = function(schema){
 
     //  Override those options specified when calling validate function. The caller can specify joi validation options
     //  when calling the validate method by passing a specific 'options' property as part of their schema definition
-    var validationOptions = joiOptions;
+    var joiValidationOptions = joiOptions;
+    var validExpressValidationOptions = validExpressOptions;
+
     if(schema.options){
-        validationOptions = _.defaults(schema.options, joiOptions);
+        joiValidationOptions = _.defaults(schema.options, joiOptions);
+
+        validExpressValidationOptions = _.defaults(schema.options, validExpressOptions);
+
+        if(_.has(joiValidationOptions, 'errorFormatter')) {
+            //  Remove non-joi options from joiOptions object to prevent "unknown key" error in joi
+            joiValidationOptions = _.omit(joiValidationOptions, 'errorFormatter');
+        }
     }
 
     var paramsSchema = schema.params ? schema.params : null;
@@ -107,22 +119,22 @@ var validate = function(schema){
 
         if(allSchema){
             var allValues = _.apply(req.params, req.query, req.body);
-            results = JOI.validate(allValues, allSchema, validationOptions);
+            results = JOI.validate(allValues, allSchema, joiValidationOptions);
             if(results.error){
                 errors.push(results.error.details);
             }
         } else {
             if(paramsSchema){
-                results = JOI.validate(req.params, paramsSchema, validationOptions);
+                results = JOI.validate(req.params, paramsSchema, joiValidationOptions);
                 if(results.error){
                     errors = errors.concat(results.error.details);
                     results = null;
                 }
             }
 
-            if(!validationOptions.abortEarly || (validationOptions.abortEarly && errors.length === 0)) {
+            if(!joiValidationOptions.abortEarly || (joiValidationOptions.abortEarly && errors.length === 0)) {
                 if(querySchema){
-                    results = JOI.validate(req.query, querySchema, validationOptions);
+                    results = JOI.validate(req.query, querySchema, joiValidationOptions);
                     if(results.error){
                         errors = errors.concat(results.error.details);
                         results = null;
@@ -130,13 +142,13 @@ var validate = function(schema){
                 }
             }
 
-            if(!validationOptions.abortEarly || (validationOptions.abortEarly && errors.length === 0)) {
+            if(!joiValidationOptions.abortEarly || (joiValidationOptions.abortEarly && errors.length === 0)) {
                 if (bodySchema) {
                     if(req.body === undefined){
                         throw Error('req.body is undefined. Seems you have forgotten to include the body-parser ' +
-                        'middleware in your express app');
+                            'middleware in your express app');
                     }
-                    results = JOI.validate(req.body, bodySchema, validationOptions);
+                    results = JOI.validate(req.body, bodySchema, joiValidationOptions);
                     if (results.error) {
                         errors = errors.concat(results.error.details);
                         results = null;
@@ -146,7 +158,7 @@ var validate = function(schema){
         }
 
         if(errors.length > 0){
-            res.status(400).json(validationOptions.errorFormatter(errors)).end();
+            res.status(400).json(validExpressValidationOptions.errorFormatter(errors)).end();
         } else {
             return next();
         }
@@ -158,6 +170,12 @@ var validate = function(schema){
 module.exports = function(options){
     if(options){
         joiOptions = _.defaults(options, joiOptions);
+        validExpressOptions = _.defaults(options, validExpressOptions);
+
+        if(_.has(joiOptions, 'errorFormatter')) {
+            //  Remove non-joi options from joiOptions object to prevent "unknown key" error in joi
+            joiOptions = _.omit(joiOptions, 'errorFormatter');
+        }
     }
 
     return {
