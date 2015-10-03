@@ -1,6 +1,6 @@
 {
   "name": "valid-express",
-  "version": "0.2",
+  "version": "0.2.1",
   "description": "Validate request params in Express apps using Joi module",
   "author": "Ehsan Zaery Moghaddam (zaerymoghaddam@gmail.com)",
   "homepage": "https://github.com/moghaddam/valid-express",
@@ -31,12 +31,12 @@
     "lodash": "3.10.1"
   },
   "devDependencies": {
-    "body-parser": "1.10.1",
-    "coveralls": "2.11.2",
-    "express": "4.10.6",
-    "mocha": "2.1.0",
-    "mocha-lcov-reporter": "0.0.1",
-    "should": "4.4.2",
-    "supertest": "0.15.0"
+    "body-parser": "1.14.1",
+    "coveralls": "2.11.4",
+    "express": "4.13.3",
+    "mocha": "2.3.3",
+    "mocha-lcov-reporter": "1.0.0",
+    "should": "7.1.0",
+    "supertest": "1.1.0"
   }
 }
